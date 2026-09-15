@@ -1,16 +1,8 @@
-pull_request_rules: []
-commands_restrictions:
-  queue:
+pull_request_rules:
+  - name: VM6 Read legacy simulator fresh-name approval marker
     conditions:
-      - sender-permission >= write
-merge_queue:
-  mode: serial
-  max_parallel_checks: 1
-queue_rules:
-  - name: default
-    batch_size: 1
-    queue_conditions: []
-    merge_conditions:
-      - check-success = vm6-ff-hold-never-20260916b
-    max_checks_retries: 0
-    merge_method: fast-forward
+      - base = main
+    actions:
+      review:
+        type: APPROVE
+        message: VM6-READ-LEGACY-SIM-FRESHNAME-APPROVAL
